@@ -1,16 +1,25 @@
 .wrapper {
-    background-color: #5d97f0;
+    background-color: #5d98f0d5;
     display: flex;
+    width: 100%;
     justify-content: center;
     align-items: center;
     padding-bottom: 5px;
     padding-top: 5px;
     box-shadow: 0px 3px 8px 1px #11428b;
+    position: fixed;
+    top: 0px;
+    z-index: 1;
 }
 
 .link {
     display: inline-block;
     text-align: center;
+    transition: 200ms;
+}
+
+.link:hover {
+    transform: scale(1.2);
 }
 
 .link,

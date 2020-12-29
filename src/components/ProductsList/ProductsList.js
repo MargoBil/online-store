@@ -1,26 +1,44 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {Context} from '../../context/context';
-import axios from 'axios';
-
-const getProducts = async () => {
-  try {
-    const {data} = await axios.get(
-      'https://yalantis-react-school-api.yalantis.com/api/v1/products/',
-    );
-    console.log(data);
-  } catch (error) {
-    console.log(error);
-  }
-};
+import {getAllProducts} from '../../helpers/fetchProducts';
+import {ProductCard} from '../ProductCard/ProductCard';
+import styles from './ProductsList.module.css';
 
 export const ProductsList = () => {
-  // const {products, setProducts} = useContext(Context);
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
+  const {products, setProducts} = useContext(Context);
+  const headerHeight = 119;
+  const scroll = document.documentElement.offsetHeight - headerHeight;
+  useEffect(() => {
+    getAllProducts(page).then(({perPage, totalItems, items}) => {
+      const total = totalItems / perPage;
+      setTotalPages(total);
+      setProducts(prev => [...prev, ...items]);
+      window.scrollTo({
+        top: scroll,
+        behavior: 'smooth',
+      });
+    });
+  }, [page]);
 
-  getProducts();
+  const handlerButton = () => {
+    if (totalPages > page) {
+      setPage(prevPage => prevPage + 1);
+    }
+  };
 
-  // useEffect(()=>{
-
-  // }, [])
-
-  return <></>;
+  return (
+    <div>
+      <ul className={styles.list}>
+        {!!products.length !== 0 &&
+          products.map(item => {
+            return <ProductCard key={item.id} item={item}/>;
+          })}
+      </ul>
+      {page !== totalPages && <button className={styles.button} onClick={handlerButton}>
+        LOAD MORE
+      </button>}
+    </div>
+  );
 };
