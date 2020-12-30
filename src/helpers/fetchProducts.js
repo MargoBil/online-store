@@ -6,6 +6,18 @@ export const getAllProducts = async (page) => {
     const {data} = await axios.get(`${baseUrl}products?page=${page}`);
     return data;
   } catch (error) {
-    throw new Error(error);
+    console.log(error);
+    return [];
   }
 };
+
+export const getProductById = async (id) => {
+  try {
+    const {data} = await axios.get(`${baseUrl}products/${id}`);
+    return data;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};
+

@@ -7,9 +7,26 @@ import styles from './AddButton.module.css';
 export const AddButton = ({orders}) => {
   const {price, id, name} = orders;
   const {setTotalCost, setOrders} = useContext(Context);
+  const ordersItemSсhema = {
+    id: id,
+    name: name,
+    cost: price,
+    quantity: 0
+  };
+
   const handlerClick = () => {
     setTotalCost(prev => prev + price);
-    setOrders(prev=>[...prev, {id, name, price}]);
+    setOrders(prev=>{
+      ordersItemSсhema.quantity += 1;
+      const isExistSameOrder = prev.find(item => item.id === id);
+      
+      if(isExistSameOrder !== undefined) {
+        isExistSameOrder.quantity +=1;
+        isExistSameOrder.cost = isExistSameOrder.cost * 2;
+        return [...prev];
+      }
+      return [...prev, ordersItemSсhema];
+    });
   }
 
   return (

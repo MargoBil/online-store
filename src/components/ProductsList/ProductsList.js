@@ -10,16 +10,22 @@ export const ProductsList = () => {
   const {products, setProducts} = useContext(Context);
   const headerHeight = 119;
   const scroll = document.documentElement.offsetHeight - headerHeight;
-  useEffect(() => {
+
+  const fetchProducts = () => {
     getAllProducts(page).then(({perPage, totalItems, items}) => {
       const total = totalItems / perPage;
       setTotalPages(total);
-      setProducts(prev => [...prev, ...items]);
+      if(page > 1) {
+        setProducts(prev => [...prev, ...items]);
+      } else {setProducts([...items])}
       window.scrollTo({
         top: scroll,
         behavior: 'smooth',
       });
     });
+  };
+  useEffect(() => {
+      fetchProducts(page);
   }, [page]);
 
   const handlerButton = () => {
@@ -33,12 +39,14 @@ export const ProductsList = () => {
       <ul className={styles.list}>
         {!!products.length !== 0 &&
           products.map(item => {
-            return <ProductCard key={item.id} item={item}/>;
+            return <ProductCard key={item.id} item={item} />;
           })}
       </ul>
-      {page !== totalPages && <button className={styles.button} onClick={handlerButton}>
-        LOAD MORE
-      </button>}
+      {page !== totalPages && (
+        <button className={styles.button} onClick={handlerButton}>
+          LOAD MORE
+        </button>
+      )}
     </div>
   );
 };

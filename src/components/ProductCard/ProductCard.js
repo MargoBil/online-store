@@ -1,15 +1,15 @@
 import React from 'react';
 import {useHistory} from 'react-router-dom';
 import {AddButton} from '../AddButton/AddButton';
-import {PRODUCT_INFO_ROUTE} from '../../helpers/routerConfig';
+import {PRODUCTS_LIST_ROUTE} from '../../helpers/routerConfig';
 import styles from './ProductCard.module.css';
 
 /* eslint-disable react/prop-types */
 
 export const ProductCard = ({item}) => {
-  const {name, origin, price} = item;
+  const {name, origin, price, id} = item;
   const history = useHistory();
-  const handlerClick = () =>history.push(PRODUCT_INFO_ROUTE);
+  const handlerClick = () => history.push(`${PRODUCTS_LIST_ROUTE}/${id}`);
   return (
     <li style={{height: '150px', width: '200px'}} className={styles.item}>
       <div onClick={handlerClick}>
