@@ -11,9 +11,9 @@ export const Header = () => {
     <header>
       <div className={styles.wrapper}>
         <Link className={styles.link} to={ORDERS_ROUTE}>
-          <Basket size='40px'/>
+          <Basket size="40px" />
         </Link>
-        <span className={styles.cost}>total cost: {totalCost}</span>
+        <span className={styles.cost}>TOTAL COST: {totalCost}</span>
       </div>
     </header>
   );

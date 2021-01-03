@@ -5,7 +5,7 @@ import {ProductInfo} from '../components/ProductInfo/ProductInfo';
 export const ProductInfoPage = () => {
   return (
     <Layout>
-      <ProductInfo/>
+      <ProductInfo />
     </Layout>
   );
 };

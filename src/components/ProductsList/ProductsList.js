@@ -8,16 +8,18 @@ export const ProductsList = () => {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   const {products, setProducts} = useContext(Context);
-  const headerHeight = 119;
-  const scroll = document.documentElement.offsetHeight - headerHeight;
-
+  
+  const headerHeight = 128;
+  let scroll = document.documentElement.offsetHeight - headerHeight;
   const fetchProducts = () => {
     getAllProducts(page).then(({perPage, totalItems, items}) => {
       const total = totalItems / perPage;
       setTotalPages(total);
-      if(page > 1) {
+      if (page > 1) {
         setProducts(prev => [...prev, ...items]);
-      } else {setProducts([...items])}
+      } else {
+        setProducts([...items]);
+      }
       window.scrollTo({
         top: scroll,
         behavior: 'smooth',
@@ -25,7 +27,7 @@ export const ProductsList = () => {
     });
   };
   useEffect(() => {
-      fetchProducts(page);
+    fetchProducts(page);
   }, [page]);
 
   const handlerButton = () => {

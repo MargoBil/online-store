@@ -12,15 +12,19 @@
     justify-content: center;
     position: relative;
 }
+
 .item:hover {
     transform: scale(1.05);
 }
+
 .item:hover .name {
     color: #11428b;
 }
+
 .item:last-child {
     justify-content: center;
 }
+
 .name {
     text-align: center;
     font-size: 20px;
@@ -28,17 +32,25 @@
 }
 
 .origin {
-   position: absolute;
-   bottom: 40px;
-   left: 20px;
-   width: 100%;
-   color: #111111;
+    position: absolute;
+    bottom: 40px;
+    left: 20px;
+    width: 100%;
+    color: #111111;
 }
+
 .price {
     position: absolute;
     bottom: 25px;
     left: 20px;
     color: #111111;
+}
+.origin, .price {
+    font-size: 13px;
+}
+.origin>span, .price>span {
+    font-size: 13px;
+    font-weight: 600;
 }
 
 .btnBox {

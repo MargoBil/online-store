@@ -1,9 +1,10 @@
 import axios from 'axios';
-const baseUrl = 'https://yalantis-react-school-api.yalantis.com/api/v1/';
+axios.defaults.baseURL =
+  'https://yalantis-react-school-api.yalantis.com/api/v1/';
 
-export const getAllProducts = async (page) => {
+export const getAllProducts = async page => {
   try {
-    const {data} = await axios.get(`${baseUrl}products?page=${page}`);
+    const {data} = await axios.get(`products?page=${page}`);
     return data;
   } catch (error) {
     console.log(error);
@@ -11,13 +12,12 @@ export const getAllProducts = async (page) => {
   }
 };
 
-export const getProductById = async (id) => {
+export const getProductById = async id => {
   try {
-    const {data} = await axios.get(`${baseUrl}products/${id}`);
+    const {data} = await axios.get(`products/${id}`);
     return data;
   } catch (error) {
     console.log(error);
     return [];
   }
 };
-

@@ -1,7 +1,4 @@
 import React from 'react';
-
-/* eslint-disable react/prop-types */
-
 export const Basket = ({size}) => (
   <svg
     width={size}
