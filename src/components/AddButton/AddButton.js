@@ -8,7 +8,7 @@ export const AddButton = ({order}) => {
   const {setTotalCost, setOrders} = useContext(Context);
   const handlerClickBtn = useCallback(() => {
     onAddProductToOrders(order, setTotalCost, setOrders);
-  });
+  }, [setOrders]);
 
   return (
     <button onClick={handlerClickBtn} className={styles.button}>

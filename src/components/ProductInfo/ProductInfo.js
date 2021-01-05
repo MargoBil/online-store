@@ -1,20 +1,11 @@
-import React, {useEffect, useState} from 'react';
-import {useParams} from 'react-router-dom';
-import {getProductById} from '../../helpers/fetchProducts';
+import React from 'react';
 import {AddButton} from '../AddButton/AddButton';
 import styles from './ProductInfo.module.css';
 
-export const ProductInfo = () => {
-  const {productId} = useParams();
-  const [product, setProduct] = useState({});
-  useEffect(() => {
-    getProductById(productId).then(data => {
-      setProduct({...data});
-    });
-  }, [productId]);
-  
+export const ProductInfo = ({product}) => {
   const {name, origin, price} = product;
   const isProduct = Object.keys(product).length > 0;
+  
   return (
     <>
       {isProduct && (

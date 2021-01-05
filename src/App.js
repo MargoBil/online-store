@@ -8,11 +8,11 @@ import {
   PRODUCT_INFO_ROUTE,
   ORDERS_ROUTE,
 } from './helpers/routerConfig';
-import {ContextProvider} from './context/ContextProvider';
+import {ProductsProvider} from './context/ContextProvider';
 
 function App() {
   return (
-    <ContextProvider>
+    <ProductsProvider>
       <Switch>
         <Route exact path="/">
           <Redirect to={PRODUCTS_LIST_ROUTE} />
@@ -22,7 +22,7 @@ function App() {
         <Route path={ORDERS_ROUTE} exact component={OrdersPage} />
         <Redirect to="/" />
       </Switch>
-    </ContextProvider>
+    </ProductsProvider>
   );
 }
 

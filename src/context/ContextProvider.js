@@ -2,7 +2,7 @@
 import React, {useState} from 'react';
 import {Context} from './context';
 
-export const ContextProvider = ({children}) => {
+export const ProductsProvider = ({children}) => {
   const [products, setProducts] = useState([]);
   const [orders, setOrders] = useState([]);
   const [totalCost, setTotalCost] = useState(0);
