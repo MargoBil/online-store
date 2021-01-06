@@ -1,0 +1,49 @@
+.table,
+th,
+td {
+  border: 1px solid #5d98f0d5;
+  border-radius: 2px 2px 2px 2px;
+}
+
+th,
+td {
+  height: 25px;
+}
+
+.table {
+  margin: 20px auto 0px auto;
+  width: 50%;
+  background-color: transparent;
+}
+
+.noneOrders {
+  text-align: center;
+  width: 100%;
+}
+
+.tableHeader {
+  font-weight: 400;
+  font-size: 15px;
+}
+
+.tableHeader,
+.total {
+  background-color: #5d98f0d5;
+  color: #ffffff;
+}
+
+.ordersRaw {
+  font-weight: 300;
+  color: #1d1b1b;
+}
+
+.orderName {
+  text-align: left;
+  padding-left: 10px;
+}
+
+.noneOrdersNote {
+  font-weight: 400;
+  font-style: italic;
+  color: #3b3a3a;
+}

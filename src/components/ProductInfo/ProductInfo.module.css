@@ -1,0 +1,21 @@
+.productBox {
+    width: 50%;
+    margin: 100px auto 0px 50px;
+}
+.nameProduct, .originProduct, .priceProduct {
+    font-size: 17px;
+    font-weight: 400;
+}
+.headerProductName {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.originProductText, .priceProductCount {
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.btnBox {
+    margin-top: 20px;
+}
